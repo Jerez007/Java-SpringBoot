@@ -4,22 +4,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/v1/student")
 public class StudentController {
+
+    private final StudentService studentService;
+
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
+    }
+
     @GetMapping
+    // This is the API layer
     public List<Student> getStudents() {
-        return List.of(
-                new Student(
-                        1L,
-                        "Homer",
-                        "homer.simpson@gmail.com",
-                        LocalDate.of(1950, 1, 5),
-                        21
-                )
-        );
+        return studentService.getStudents();
     }
 }
