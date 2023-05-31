@@ -1,8 +1,12 @@
 package com.example.demo.student;
 
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
 import java.time.LocalDate;
 import java.util.List;
 
+@Service // This class is meant to be a service class
 public class StudentService {
     public List<Student> getStudents() {
         return List.of(
@@ -14,4 +18,5 @@ public class StudentService {
                         21
                 )
         );
+    }
 }
